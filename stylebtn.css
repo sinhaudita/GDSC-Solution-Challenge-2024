@@ -1,0 +1,139 @@
+
+ .bton  {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));  
+   gap:20px; 
+   /* padding-bottom: 20px; */
+   margin-top: 60px;
+ } 
+ 
+
+.btn {
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    position: relative;
+    margin: 20px auto;
+    padding-left: 40px;
+    width: 200px;
+    height: 100px;
+    background-image: linear-gradient(to left bottom, #c2bfe4, #ddc7e2, #f0d1e0, #fadee1, #ffece8);
+    border-radius: 75px;
+    font-family:"Dancing Script", cursive;
+    font-size: 25px;
+    font-weight: bolder;
+    color:black;
+    letter-spacing: 2px;
+    /* z-index: 2; */
+  text-decoration: none;
+    transition: 1s box-shadow;
+  }
+
+  
+  
+  .btn:hover {
+    box-shadow: 0 5px 35px 0px rgba(0,0,0,.1);
+  }
+  
+  .btn:hover::before, .btn:hover::after {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    background: #FDA8CF;
+    border-radius: 75px;
+    z-index: -1;
+    animation: 1s clockwise infinite;
+  }
+  
+  .btn:hover:after {
+    background: #F3CE5E;
+    animation: 2s counterclockwise infinite;
+  }
+  
+  @keyframes clockwise {
+    0% {
+      top: -10px;
+      left: 0;
+    }
+    12% {
+      top: -5px;
+      left: 5px;
+    }
+    25% {
+      top: 0;
+      left: 8px;    
+    }
+    37% {
+      top: 5px;
+      left: 5px;
+    }
+    50% {
+      top: 8px;
+      left: 0;    
+    }
+    62% {
+      top: 5px;
+      left: -5px;
+    }
+    75% {
+      top: 0;
+      left: -8px;
+    }
+    87% {
+      top: -5px;
+      left: -5px;
+    }
+    100% {
+      top: -8px;
+      left: 0;    
+    }
+  }
+  
+  @keyframes counterclockwise {
+    0% {
+      top: -10px;
+      right: 0;
+    }
+    12% {
+      top: -5px;
+      right: 5px;
+    }
+    25% {
+      top: 0;
+      right: 8px;    
+    }
+    37% {
+      top: 5px;
+      right: 5px;
+    }
+    50% {
+      top: 8px;
+      right: 0;    
+    }
+    62% {
+      top:5px;
+      right: -5px;
+    }
+    75% {
+      top: 0;
+      right: -8px;
+    }
+    87% {
+      top: -5px;
+      right: -5px;
+    }
+    100% {
+      top: -8px;
+      right: 0;    
+    }
+  }
+  @media screen and (max-width:768px) {
+    .btn{
+      margin-top: 0px;
+    }
+    
+  }
+
+ 
