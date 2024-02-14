@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+  }
+  body{
+    font-family: montserrat;
+  }
+  .outer-box {
+    width: 100%;
+    min-height: 100vh; /* Ensure minimum height of viewport */
+    display: flex;
+    justify-content: center; /* Horizontally center the inner-box */
+    align-items: center; /* Vertically center the inner-box */
+    background: linear-gradient(to top right, cyan, violet);
+    position: relative; /* Ensure correct positioning */
+    z-index: 1
+}
+
+.inner-box {
+    width: 90%; /* Adjust width as needed */
+    max-width: 450px; /* Limit maximum width */
+    padding: 20px 40px;
+    background: linear-gradient(to top left, #ffffffff, #ffffff33);
+    backdrop-filter: blur(8px);
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px #555;
+    z-index: 2;
+}
+nav {
+    /* Other styles */
+    z-index: 3; /* Ensure the navbar is above other elements */
+}
+
+.signup-header h1{
+    font-size: 2.5rem;
+    color: #212121;
+}
+
+.signup-header p{
+    padding: 3px;
+    font-size: 0.9rem;
+    color: #555;
+}
+.signup-body{
+    margin:20px 0;
+}
+.signup-body p{
+    margin: 10px 0;
+}
+.signup-body p label{
+    display : block;
+    font-weight: bold;
+} 
+.signup-body p input{
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #cccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-top: 4px;
+}
+.signup-body p input[type="submit"]{
+    background-color: #3498d3;
+    border: none;
+    cursor: pointer;
+}
+.signup-body p input[type="submit"]:hover{
+    background-color: #2d6e93;
+}
+.circle{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    background: linear-gradient(to right, #ffffff33, #ffffffff);
+    position: absolute;
+}
+.c1{
+    top: 100px;
+    left: 40px;
+z-index: 1;
+}
+.c2{
+    top: 400px;
+    right: 50px;
+    z-index: 1;
+}
+.radio-group { 
+    display: flex; 
+    margin-bottom: 16px; 
+} 
+  
+input[type="radio"] { 
+    margin-right: 8px; 
+} 
+
+textarea { 
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 10px; 
+    box-sizing: border-box; 
+    border-radius: 10px; 
+  
+} 
+

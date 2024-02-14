@@ -13,6 +13,8 @@
     background-image: linear-gradient(to right top, #a6abb4, #9ea3c0, #a198c7, #af8ac7, #c477bd);
     height: 150px;
     width: 100%;
+    position: relative; /* Ensure correct positioning */
+    z-index: 3;
     
   }
   label.logo{
