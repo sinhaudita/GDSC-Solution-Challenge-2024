@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Period Tracker</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Include Font Awesome CSS -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courgette&display=swap"> <!-- Include Courgette font -->
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif, 'Courgette';
+    background-color: #f2d1f3;
+  }
+
+  .header {
+    text-align: center;
+    color: #BD0167;
+    padding:20px 0px;
+    background-color: hsl(0, 0%, 100%);
+    margin-bottom: 0px;
+  }
+
+  .header h1 {
+    font-family: 'Courgette', cursive;
+    font-size: 70px;
+    margin: 0;
+  }
+  
+  .header-text-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+    
+  .header .icon {
+    margin-right: 10px;
+    font-size: 32px;
+    color: #C5696A; /* Customized icon color */
+  }
+
+  .main-container {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(to bottom right, #e7365f, #da4df6);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    width: auto;
+  }
+
+  .box-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow boxes to wrap */
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px; /* Add margin-bottom for better spacing */
+  }
+
+  .box {
+    width: calc(25% - 20px); /* Four boxes per row */
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+  }
+  .box:nth-child(2) input[type="number"],
+  .box:nth-child(3) select,
+  .box:nth-child(4) select {
+    
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  input[type="text"], input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .track-button {
+    background-color: #1a13f7;
+    border: none;
+    color: white;
+    padding: 15px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px; /* Increased font size */
+    border-radius: 50px; /* Increased border radius */
+    cursor: pointer;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.651); /* Adjusted box shadow */
+    transition: box-shadow 0.5s ease;
+  }
+
+  .track-button:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: rgb(19, 107, 17);
+  }
+
+  #result-container {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .current-entry-container {
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    max-width: 500px; /* Set maximum width */
+    margin: 0 auto; /* Center horizontally */
+  }
+
+  .current-entry-heading {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  table {
+    margin: auto;
+    width: 80%; /* Adjust table width */
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  #history-button {
+    background-color: #999;
+    border: none;
+    color: white;
+    padding: 15px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px; /* Increased font size */
+    border-radius: 50px; /* Increased border radius */
+    cursor: pointer;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.651); /* Adjusted box shadow */
+    transition: box-shadow 0.5s ease;
+  }
+
+  #history-button:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #666;
+  }
+
+  .delete-button {
+    background-color: #ff3333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+
+  .delete-button:hover {
+    background-color: #cc0000;
+  }
+
+  @media screen and (max-width: 768px) {
+    .box {
+      width: calc(100% - 20px); /* Two boxes per row on smaller screens */
+    }
+
+    table {
+      width: 90%; /* Adjust table width on smaller screens */
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .box {
+      width: calc(20% - 20px); /* Five boxes per row on larger screens */
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Period Tracker</h1>
+  <div class="header-text-container">
+    <i class="fa fa-edit icon"></i> <!-- Font Awesome icon -->
+    <h3>Keep track of your menstrual cycles on your fingertips.</h3>
+  </div>
+  <hr>
+</div>
+
+<div class="main-container">
+  <div class="box-container">
+    <div class="box">
+      <label for="last-period">1. Date of your last period?</label>
+      <input type="date" id="last-period" name="last-period" placeholder="Enter last period date">
+    </div>
+    <div class="box">
+      <label for="cycle-length">2. How many days did it last?</label>
+      <input type="number" id="cycle-length" name="cycle-length" placeholder="Enter your cycle length">
+    </div>
+    <div class="box">
+      <label for="flow intensity">3. How heavy was your flow?</label>
+      <select id="flow" name="flow">
+        <option value="">Select</option>
+        <option value="light">Light</option>
+        <option value="medium">Medium</option>
+        <option value="heavy">Heavy</option>
+      </select>
+    </div>
+    <div class="box">
+      <label for="pain level">4. What was your pain level?</label>
+      <select id="pain-level" name="pain-level">
+        <option value="">Select</option>
+        <option value="mild">Mild</option>
+        <option value="moderate">Moderate</option>
+        <option value="intolerable">Intolerable</option>
+      </select>
+    </div>
+  </div>
+  <button class="track-button" id="track-button">Track Now</button>
+  <button class="track-button" id="history-button">History</button>
+</div>
+
+<div id="result-container"></div>
+
+<script>
+  var historyData = JSON.parse(localStorage.getItem('historyData')) || []; // Load historyData from localStorage or initialize as empty array
+  
+  document.getElementById('track-button').addEventListener('click', function() {
+    // Get input values
+    var lastPeriod = document.getElementById('last-period').value;
+    var cycleLength = parseInt(document.getElementById('cycle-length').value);
+    var flowIntensity = document.getElementById('flow').value;
+    var painLevel = document.getElementById('pain-level').value;
+    
+    // Validation: Check if all fields are filled
+    if (!lastPeriod || isNaN(cycleLength) || !flowIntensity || !painLevel) {
+      alert('Please fill in all fields.');
+      return;
+    }
+
+    // Calculate next period date
+    var lastPeriodDate = new Date(lastPeriod);
+    var nextPeriodDate = new Date(lastPeriodDate.getTime() + cycleLength * 24 * 60 * 60 * 1000);
+    var formattedNextPeriodDate = nextPeriodDate.toDateString();
+    var entryDateTime = new Date().toLocaleString(); // Get current date and time
+    
+    // Store data in history array
+    historyData.push({
+      lastPeriod: lastPeriod,
+      cycleLength: cycleLength,
+      flowIntensity: flowIntensity,
+      painLevel: painLevel,
+      nextPeriodDate: formattedNextPeriodDate,
+      entryDateTime: entryDateTime // Store entry date and time
+    });
+
+    // Store historyData in localStorage
+    localStorage.setItem('historyData', JSON.stringify(historyData));
+    
+    // Display results
+    displayResults();
+  });
+
+  function displayResults() {
+    var resultContainer = document.getElementById('result-container');
+    var currentEntry = historyData[historyData.length - 1]; // Get the latest entry
+    
+    // Display current entry
+    var currentEntryHTML = `
+      <div class="current-entry-container">
+        <h2 class="current-entry-heading">Result</h2>
+        <p><strong>Date of Last Period:</strong> ${currentEntry.lastPeriod}</p>
+        <p><strong>Length of Cycle (Days):</strong> ${currentEntry.cycleLength}</p>
+        <p><strong>Flow Intensity:</strong> ${currentEntry.flowIntensity}</p>
+        <p><strong>Pain Level:</strong> ${currentEntry.painLevel}</p>
+        <p><strong>Next Period Date:</strong> ${currentEntry.nextPeriodDate}</p>
+        <p><strong>Entry Date and Time:</strong> ${currentEntry.entryDateTime}</p>
+      </div>
+    `;
+    resultContainer.innerHTML = currentEntryHTML;
+  }
+
+  // Function to generate history table
+  function generateHistoryTable() {
+    var resultContainer = document.getElementById('result-container');
+    var historyHTML = `
+      <h2 class="current-entry-heading">History</h2>
+      <table id="history-table">
+        <tr>
+          <th></th>
+          <th>Date and Time of entry</th>
+          <th>Date of Last Period</th>
+          <th>Length of Cycle (Days)</th>
+          <th>Flow Intensity</th>
+          <th>Pain Level</th>
+          <th>Next Period Date</th>
+        </tr>
+        ${historyData.map((data, index) => `
+          <tr>
+            <td><input type="checkbox" class="delete-checkbox" data-index="${index}"></td>
+            <td>${data.entryDateTime}</td>
+            <td>${data.lastPeriod}</td>
+            <td>${data.cycleLength}</td>
+            <td>${data.flowIntensity}</td>
+            <td>${data.painLevel}</td>
+            <td>${data.nextPeriodDate}</td>
+          </tr>
+        `).join('')}
+      </table>
+      <button class="delete-button" id="delete-button">Delete Selected</button>
+    `;
+    resultContainer.innerHTML = historyHTML;
+
+    // Attach event listener to delete button
+    document.getElementById('delete-button').addEventListener('click', function() {
+      var checkboxes = document.querySelectorAll('.delete-checkbox:checked');
+      checkboxes.forEach(checkbox => {
+        var indexToDelete = parseInt(checkbox.dataset.index);
+        historyData.splice(indexToDelete, 1);
+      });
+      localStorage.setItem('historyData', JSON.stringify(historyData));
+      generateHistoryTable(); // Refresh history table
+    });
+  }
+
+  // Event listener for History button
+  document.getElementById('history-button').addEventListener('click', function() {
+    generateHistoryTable();
+  });
+</script>
+
+</body>
+</html>
