@@ -19,7 +19,7 @@
   }
   label.logo{
     color:darkred;
-    font-size: 150px;
+    font-size: 120px;
     /* line-height: 80px; */
     padding: 0px 100px;
     font-weight: bold;
@@ -98,17 +98,17 @@
   #check{
     display: none;
   }
-  @media (max-width: 952px){
+  @media (max-width:952px){
     label.logo{
-      font-size: 80px;
+      font-size: 90px;
       padding-left: 50px;
-      margin-bottom: 10px;
+      
     }
     nav ul li a{
       font-size: 16px;
     }
   }
-  @media (max-width: 858px){
+  @media (max-width: 1137px){
     .checkbtn{
       display: block;
     }
@@ -149,6 +149,14 @@
     }
     #check:checked ~ ul{
       left: 0;
+    }
+  }
+  @media screen and (max-width:767px) {
+    label.logo{
+      font-size: 70px;
+    }
+    nav{
+      height:80px;
     }
   }
 
