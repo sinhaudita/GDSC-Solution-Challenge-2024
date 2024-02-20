@@ -1,0 +1,13 @@
+body {
+    color: white;
+    background-image: linear-gradient(to right top, #051937, #473256, #824f6c, #b8737b, #e39f88);
+    min-height: 100vh;
+    margin: 0; /* Remove default margin */
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    text-align: center; /* Center text inside */
+ }
+ h2 {
+    max-width: 80%; 
+}
