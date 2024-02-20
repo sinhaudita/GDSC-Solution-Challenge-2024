@@ -344,7 +344,7 @@ nav ul li.dropdown:hover .dropdown-content {
 
 nav ul li.dropdown .dropdown-content a {
   color: maroon;
-  padding: 4px;
+  padding: 3px;
   display: block;
   text-decoration: none;
 }
